@@ -253,6 +253,7 @@ be the returned value of a function! So you can just call a function as array va
 GOOD LUCK 😀
 */
 
+// Expression Function
 const calcTip = function (bill) {
 
   return bills >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
@@ -265,3 +266,94 @@ const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 
 console.log(tips);
 console.log(`The total of the bills is (${bills}), the total of tips is (${tips}) and the total of tips and bills is (${totals})`);
+
+// Arrow Function
+
+const calcTip = bill => bills >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
+
+let bills = [125, 555, 44];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+
+console.log(tips);
+console.log(`The total of the bills is (${bills}), the total of tips is (${tips}) and the total of tips and bills is (${totals})`);
+
+/*************** CODE CHALLENGE 2.1 FUNDAMENTALS PART 2 ******************/
+
+// Create a sumary with all of your informations
+
+
+const Max = {
+  firstName: 'Max',
+  lastName: 'William',
+  birthYear: 1997,
+  job: 'Front-End Developer',
+  friends: ['Pet', 'João', 'Bruno'],
+  fiancee: 'Andressa',
+  pets: ['Nero', 'Zoe'],
+  hasDriversLicense: false,
+  calcAge: function() {
+      this.age = 2021 - this.birthYear;
+      return this.age;
+  },
+  getSumary: function() {
+      return `My name is ${this.firstName} ${this.lastName} I'am ${this.calcAge()} years old, I'am a ${this.job}, I love my fiancee ${this.fiancee} 
+      and I have ${this.pets.length} pets called ${this.pets} and currently I have ${this.hasDriversLicense ? 'a' : 'no'} drivers license`
+  }
+}
+
+console.log(Max.getSumary());
+
+/*************** CODE CHALLENGE 3 FUNDAMENTALS PART 2 ******************/
+
+
+/*
+Let's go back to Mark and John comparing their BMIs! 
+This time, let's use objects to implement the calculations! 
+Remember: BMI = mass / height ** 2 = mass / (height * height). 
+(mass in kg and height in meter)
+
+1. For each of them, create an object with properties for their full name, mass, 
+and height (Mark Miller and John Smith)
+2. Create a 'calcBMI' method on each object to calculate the 
+BMI (the same method on both objects). 
+Store the BMI value to a property, and also return it from the method.
+3. Log to the console who has the higher BMI, together with the full 
+name and the respective BMI. 
+Example: "John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!"
+
+TEST DATA: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+
+GOOD LUCK 😀
+*/
+
+const mark = {
+  firstName: 'Mark',
+  lastName: 'Miller',
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    return this.bmi = (this.mass / (this.height ** 2)).toFixed(1);
+  },
+   resume: function () {
+    return `${this.firstName} ${this.lastName}'s BMI (${this.calcBMI()})`
+  }
+}
+
+const john = {
+  firstName: 'John',
+  lastName: 'Smith',
+  mass: 120,
+  height: 1.95,
+  calcBMI: function () {
+    return this.bmi = (this.mass / (this.height ** 2)).toFixed(1);
+  },
+  resume: function () {
+    return `${this.firstName} ${this.lastName}'s BMI (${this.calcBMI()})`
+  }
+}
+
+john.calcBMI();
+mark.calcBMI();
+
+console.log(john.resume(),`${john.bmi >= mark.bmi ? 'is higher' : 'is lower'} than`, mark.resume());
