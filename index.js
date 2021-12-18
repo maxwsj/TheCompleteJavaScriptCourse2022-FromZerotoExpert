@@ -357,3 +357,336 @@ john.calcBMI();
 mark.calcBMI();
 
 console.log(john.resume(),`${john.bmi >= mark.bmi ? 'is higher' : 'is lower'} than`, mark.resume());
+
+/*************** CODE CHALLENGE 4 FUNDAMENTALS PART 2 ******************/
+/*
+Let's improve Steven's tip calculator even more, this time using loops!
+
+1. Create an array 'bills' containing all 10 test bill values
+2. Create empty arrays for the tips and the totals ('tips' and 'totals')
+3. Use the 'calcTip' function we wrote before (no need to repeat) 
+to calculate tips and total values (bill + tip) 
+for every bill value in the bills array. Use a for loop to perform the 10 calculations!
+
+TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+
+HINT: Call calcTip in the loop and use the push method 
+to add values to the tips and totals arrays 😉
+
+4. BONUS: Write a function 'calcAverage' which takes an array called 
+'arr' as an argument. This function calculates the average of all numbers 
+in the given array. This is a DIFFICULT challenge (we haven't done this before)! 
+Here is how to solve it:
+  4.1. First, you will need to add up all values in the array. 
+To do the addition, start by creating a variable 'sum' that starts at 0. 
+Then loop over the array using a for loop. In each iteration, 
+add the current value to the 'sum' variable. 
+This way, by the end of the loop, you have all values added together
+  4.2. To calculate the average, divide the sum you calculated 
+before by the length of the array (because that's the number of elements)
+  4.3. Call the function with the 'totals' array
+
+GOOD LUCK 😀
+*/
+
+const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+const arr = [];
+
+for (let i = 0; i < bills.length; i++ ) {
+     tips.push(calcTip(bills[i]));
+     totals.push(tips[i] + bills[i]);
+}
+
+const calcAverage = arr => {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++ ) {
+        sum += arr[i];
+    };
+    return sum / totals.length;
+}
+
+console.log(`Bills:                    ${bills}`);
+console.log(`Total of tips:            ${tips}`);
+console.log(`Total of bills with tips: ${totals}`);
+console.log(`Total avarage of the bills with tips: ${calcAverage(totals)}`);
+
+/*************** Practice Assignments for JavaScript Fundamentals ******************/
+
+/**************** JavaScript Fundamentals – Part 1 ****************/ 
+
+/********** LECTURE: Values and Variables **********/
+
+// /* 1. Declare variables called 'country', 'continent' and 'population' and
+// assign their values according to your own country (population in millions) */
+// const country = 'Brasil';
+// const continent = 'Ámerica do Sul';
+// let population = 212.6;
+
+// /* 2. Log their values to the console */
+// console.log(country, continent, population)
+
+// /********** LECTURE: Data Types **********/
+ 
+// /* 1. Declare a variable called 'isIsland' and set its value according to your
+// country. The variable should hold a Boolean value. Also declare a variable
+// 'language', but don't assign it any value yet */
+// let isIsland = true;
+// let language = '';
+
+// /* 2. Log the types of 'isIsland', 'population', 'country' and 'language'
+// to the console */
+// console.log(typeof isIsland, typeof population, typeof country, typeof language)
+
+// /********** LECTURE: let, const and var **********/
+
+// /* 1. Set the value of 'language' to the language spoken where you live (some
+// countries have multiple languages, but just choose one) */
+// language = 'Português';
+
+// /* 2. Think about which variables should be const variables (which values will never
+// change, and which might change?). Then, change these variables to const. */
+// // const country = 'Brasil';
+// // const continent = 'Ámerica do Sul';
+// // let population = 212.6;
+// // let isIsland = true;
+// // let language = '';
+
+// /* 3. Try to change one of the changed variables now, and observe what happens */
+// // country = 'Canada';
+
+// /********** LECTURE: Basic Operators **********/
+
+// /* 1. If your country split in half, and each half would contain half the population,
+// then how many people would live in each half? */
+// let populationOP = (population / 2) / 2
+// console.log(population);
+
+// /* 2. Increase the population of your country by 1 and log the result to the console */
+// let populationIncrease = population++
+// console.log(population);
+
+// /* 3. Finland has a population of 6 million. Does your country have more people than
+// Finland? */
+// let finLand = 6.000
+// console.log(population > finLand);
+
+// /* 4. The average population of a country is 33 million people. Does your country
+// have less people than the average country? */
+// let countryX = 33.000
+// console.log(population > countryX);
+
+// /* 5. Based on the variables you created, create a new variable 'description'
+// which contains a string with this format: 'Portugal is in Europe, and its 11 million
+// people speak portuguese' */
+// let description = (country + " is in " + continent + " , and its " + population + " million people speak " + language);
+// console.log(description);
+
+// /********** LECTURE: Strings and Template Literals **********/
+
+// /* 1. Recreate the 'description' variable from the last assignment, this time
+// using the template literal syntax */
+// description = `${country} is in ${continent}, and its ${population} million people speak ${language}`;
+// console.log(description);
+
+// /********** LECTURE: Taking Decisions: if / else Statements **********/
+
+// /* 1. If your country's population is greater that 33 million, log a string like this to the
+// console: 'Portugal's population is above average'. Otherwise, log a string like
+// 'Portugal's population is 22 million below average' (the 22 is the average of 33
+// minus the country's population) */
+// let populationX = 33.000;
+// console.log(population > populationX ? `${country}'s population is above average` : `${country}'s population is ${population - countryX} million below average`);
+
+
+// /* 2. After checking the result, change the population temporarily to 13 and then to
+// 130. See the different results, and set the population back to original */
+
+// population = 12;
+// console.log(population > populationX ? `${country}'s population is above average` : `${country}'s population is ${population - countryX} million below average`);
+
+// population = 130;
+// console.log(population > populationX ? `${country}'s population is above average` : `${country}'s population is ${population - countryX} million below average`);
+
+// population = 212.6;
+
+/********** LECTURE: Type Conversion and Coercion **********/
+
+/* 1. Predict the result of these 5 operations without executing them:
+'9' - '5'; 4 CERTO
+'19' - '13' + '17'; 617 CERTO
+'19' - '13' + 17; 617 ERRADO | Primeiro vai realizar a subtração, e por isso a string torna-se número, e 6 + 17 = 23
+'123' < 57; NaN ERRADO | Mesmo sendo do tipo string, o valor comparado será considerado como tipo númerico, pois não estamos utilizando o comparador de igualdade estrita
+5 + 6 + '4' + 9 - 4 - 2; 43 ERRADO | Primeir realiza as expreções matemáticas (5 + 6) + '4' + (9 - 4 - 2) | (11) + '4' + (3) | e por fim tudo é concatenado (1143)
+*/ 
+
+/* 2. Execute the operations to check if you were right */
+
+// console.log('9' - '5');
+// console.log('19' - '13' + '17');
+// console.log('19' - '13' + 17);
+// console.log('123' < 57);
+// console.log(5 + 6 + '4' + 9 - 4 - 2); 
+
+/********** LECTURE: Equality Operators: == vs. === **********/
+
+/* 1. Declare a variable 'numNeighbours' based on a prompt input like this:
+prompt('How many neighbour countries does your country have?'); */
+// let numNeighbours = prompt('How many neighbour countries does your country have?');
+
+/* 2. If there is only 1 neighbour, log to the console 'Only 1 border!' (use loose equality
+== for now) */
+// if (numNeighbours == 1) {
+//     console.log("Only 1 border!")
+// }
+
+/* 3. Use an else-if block to log 'More than 1 border' in case 'numNeighbours'
+is greater than 1 */
+// if (numNeighbours == 1) {
+//     console.log("Only 1 border!");
+// } else {
+//     console.log("More than 1 border");
+// }
+
+/* 4. Use an else block to log 'No borders' (this block will be executed when
+'numNeighbours' is 0 or any other value) */
+// if (numNeighbours == 1) {
+//     console.log("Only 1 border!");
+// } else if (numNeighbours == 0) {
+//     console.log("No borders!");
+// } else {
+//     console.log("More than 1 border");
+// }
+
+/* 5. Test the code with different values of 'numNeighbours', including 1 and 0. */
+// if (numNeighbours == 1) {
+//     console.log("Only 1 border!");
+// } else if (numNeighbours == 0) {
+//     console.log("No borders!");
+// } else if (numNeighbours >= 50 && numNeighbours <= 100){
+//     console.log("That's a lot of borders");
+// } else {
+//     console.log("More than 1 border");
+// }
+
+/* 6. Change == to ===, and test the code again, with the same values of
+'numNeighbours'. Notice what happens when there is exactly 1 border! Why
+is this happening? */
+
+// if (numNeighbours === 1) {
+//     console.log("Only 1 border!");
+// } else if (numNeighbours === 0) {
+//     console.log("No borders!");
+// } else if (numNeighbours >= 50 && numNeighbours <= 100){
+//     console.log("That's a lot of borders");
+// } else {
+//     console.log("More than 1 border");
+// }
+
+/* 7. Finally, convert 'numNeighbours' to a number, and watch what happens now
+when you input 1 */
+
+// numNeighbours = Number(numNeighbours);
+
+// if (numNeighbours === 1) {
+//     console.log("Only 1 border!");
+// } else if (numNeighbours === 0) {
+//     console.log("No borders!");
+// } else if (numNeighbours >= 50 && numNeighbours <= 100){
+//     console.log("That's a lot of borders");
+// } else {
+//     console.log("More than 1 border");
+// }
+
+/* 8. Reflect on why we should use the === operator and type conversion in this
+situation */
+
+// Because we doesn't always know what kind of data we will receive from de user.
+
+/********** LECTURE: Logical Operators **********/
+
+/* 1. Comment out the previous code so the prompt doesn't get in the way 
+ 2. Let's say Sarah is looking for a new country to live in. She wants to live in a
+country that speaks english, has less than 50 million people and is not an
+island.
+ 3. Write an if statement to help Sarah figure out if your country is right for her.
+You will need to write a condition that accounts for all of Sarah's criteria. Take
+your time with this, and check part of the solution if necessary. 
+4. If yours is the right country, log a string like this: 'You should live in Portugal :)'. If
+not, log 'Portugal does not meet your criteria :('
+ 5. Probably your country does not meet all the criteria. So go back and temporarily
+change some variables in order to make the condition true (unless you live in
+Canada :D) */
+
+// let country = 'United States';
+// let language = 'English';
+// let population = 32;
+// let isIsland = true;
+
+// if (language = 'English' && population < 33 && isIsland == false) {
+//     console.log(`You should live in ${country} :)`);
+// } else {
+//     console.log(`${country} does not meet your criteria :(`);
+// };
+
+/********** LECTURE: The switch Statement **********/
+
+/* 1. Use a switch statement to log the following string for the given 'language':
+chinese or mandarin: 'MOST number of native speakers!'
+spanish: '2nd place in number of native speakers'
+english: '3rd place'
+hindi: 'Number 4'
+arabic: '5th most spoken language'
+for all other simply log 'Great language too :D' */
+
+// let language = prompt(`What is your language? `);
+
+// switch(language) {
+//     case  'chinese':
+//     case  'mandarin':
+//         console.log(`MOST number of native speakers!`);
+//         break;
+
+//     case 'spanish':
+//         console.log(`2nd place in number of native speakers`);
+//         break;
+
+//     case 'english':
+//         console.log(`3rd place`);
+//         break;
+
+//     case 'hindi':
+//         console.log(`Number 4`);
+//         break;
+
+//     case 'arabic':
+//         console.log(`5th most spoken language`);
+//         break;
+
+//     default:
+//         console.log(`Great language too :D`);
+// }
+
+/********** LECTURE: The Conditional (Ternary) Operator **********/
+
+/* 1. If your country's population is greater than 33 million, use the ternary operator
+to log a string like this to the console: 'Portugal's population is above average'.
+Otherwise, simply log 'Portugal's population is below average'. Notice how only
+one word changes between these two sentences! */
+
+let population = 35;
+const country = 'Brasil';
+console.log(population > 33 ? `${country}'s population is above average` : `${country}'s population is below average`)
+
+/* 2. After checking the result, change the population temporarily to 13 and then to
+130. See the different results, and set the population back to original */
+
+// Teste DATA 13
+population = 13;
+console.log(population > 33 ? `${country}'s population is above average` : `${country}'s population is below average`)
+
+// Teste DATA 130
+population = 130;
+console.log(population > 33 ? `${country}'s population is above average` : `${country}'s population is below average`)
