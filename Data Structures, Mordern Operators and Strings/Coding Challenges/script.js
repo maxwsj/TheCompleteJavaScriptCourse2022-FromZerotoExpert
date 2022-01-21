@@ -73,33 +73,33 @@ const game = {
 // Code Challenge 1#
 
 // 1.
-const [players1, players2] = game.players; // Usei spread, o certo era Destructuring
+// const [players1, players2] = game.players; // Usei spread, o certo era Destructuring
 // console.log(players1);
 // console.log(players2);
 
 // 2
-const [gk, ...fieldPlayer] = players1;
+// const [gk, ...fieldPlayer] = players1;
 // console.log(`Team 1: The goalkeeper: ${gk}, and field players: ${fieldPlayer}`);
 
 // 3.
-const allPlayers = [...players1, ...players2];
+// const allPlayers = [...players1, ...players2];
 // console.log(allPlayers);
 
 // 4.
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 // console.log(players1Final);
 
 // 5.
 // Meu jeito
-const { team1, x: draw, team2 } = game.odds;
-console.log(team1);
-console.log(draw);
-console.log(team2);
+// const { team1, x: draw, team2 } = game.odds;
+// console.log(team1);
+// console.log(draw);
+// console.log(team2);
 
 // Outra forma
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
 
 // Destructure the odds and turn it into a single object, then in this desctructure we destructure the
 // odds object.
@@ -117,20 +117,20 @@ number of goals that were scored in total (number of player names passed in)
   }
 
 */
-const printGoals = function (...players) {
-  console.log(`${players.length} goals were scored`);
-};
+// const printGoals = function (...players) {
+//   console.log(`${players.length} goals were scored`);
+// };
 
-printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
-printGoals(...game.scored);
+// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+// printGoals(...game.scored);
 
 /* 
 7. The team with the lower odd is more likely to win. Print to the console which
 team is more likely to win, without using an if/else statement or the ternary
 operator. 
 */
-team1 > team2 && console.log('Team 1 is more likely to win '); // if TRUE runs console log
-team1 < team2 && console.log('Team 2 is more likely to win '); // if TRUE runs console log
+// team1 > team2 && console.log('Team 1 is more likely to win '); // if TRUE runs console log
+// team1 < team2 && console.log('Team 2 is more likely to win '); // if TRUE runs console log
 
 /*************************************************************************************************/
 
@@ -164,40 +164,40 @@ game, it will look like this:
 
 // 1.
 
-for (const [goal, playerName] of game.scored.entries())
-  console.log(`Goal ${goal + 1}: ${playerName}`);
+// for (const [goal, playerName] of game.scored.entries())
+//   console.log(`Goal ${goal + 1}: ${playerName}`);
 
 // 2.
 
-const odds = Object.values(game.odds);
-let avarage = 0;
-for (const odd of odds) avarage += odd;
-avarage /= odds.length; // fora do loop
+// const odds = Object.values(game.odds);
+// let avarage = 0;
+// for (const odd of odds) avarage += odd;
+// avarage /= odds.length; // fora do loop
 // console.log(avarage); // fora do loop
 
 // 3.
 
-for (const [team, odd] of Object.entries(game.odds)) {
-  let stringTeam = team === 'x' ? 'draw' : `victory ${game[team]}`; // Acessar a propriedade de um objeto utilizando uma array
-  console.log(`Odd of ${stringTeam}: ${odd}`);
-}
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   let stringTeam = team === 'x' ? 'draw' : `victory ${game[team]}`; // Acessar a propriedade de um objeto utilizando uma array
+//   console.log(`Odd of ${stringTeam}: ${odd}`);
+// }
 
 // 4.
 
 // MINHA SOLUÇÃO
-const scorers = {};
-for (const [i, player] of game.scored.entries()) {
-  scorers.push(player, i);
-}
+// const scorers = {};
+// for (const [i, player] of game.scored.entries()) {
+//   scorers.push(player, i);
+// }
 // console.log(game.scorers);
 
 // RESPOSTA CORRETA
 /* So the solution is to loop over the array, and add the array elements as object properties, 
 and then increase the count as we encounter a new occurence of a certain element */
-const scorers = {};
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
-}
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
 // console.log(scorers);
 
 /*************************************************************************************************/
@@ -221,53 +221,117 @@ whether it's in the first half or second half (after 45 min) of the game, like t
 GOOD LUCK
 */
 
-const gameEvents = new Map([
-  [17, '⚽ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🟡 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽ GOAL'],
-  [80, '⚽ GOAL'],
-  [92, '🟡 Yellow card'],
-]);
+// const gameEvents = new Map([
+//   [17, '⚽ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🟡 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽ GOAL'],
+//   [80, '⚽ GOAL'],
+//   [92, '🟡 Yellow card'],
+// ]);
 
 // 1.
 
-const events = [...new Set(gameEvents.values())];
-console.log(events);
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
 
 // 2.
 
-gameEvents.delete(64);
-console.log(gameEvents);
+// gameEvents.delete(64);
+// console.log(gameEvents);
 
 // 3.
 
-const time = [...gameEvents.keys()].pop(); // Recebe o último elemento da array (92)
-console.log(time);
+// const time = [...gameEvents.keys()].pop(); // Recebe o último elemento da array (92)
+// console.log(time);
 
-console.log(`An event happened, on
-average, every ${time / gameEvents.size} minutes`);
+// console.log(`An event happened, on
+// average, every ${time / gameEvents.size} minutes`);
 
 // 4.
-const timeHalf = 45;
+// const timeHalf = 45;
 
-for (const [gameTime, event] of gameEvents) {
-  // #Primeiro método
-  // if (gameTime < timeHalf) {
-  //   console.log(`[FIRST HALF] ${gameTime}: ${event}`);
-  // } else {
-  //   console.log(`[SECOND HALF] ${gameTime}: ${event}`);
-  // }
-  // #Segundo método
-  // gameTime < timeHalf
-  //   ? console.log(`[FIRST HALF] ${gameTime}: ${event}`)
-  //   : console.log(`[SECOND HALF] ${gameTime}: ${event}`);
-  // #Terceiro método
-  const half = gameTime < timeHalf ? '[FIRST' : '[SECOND';
-  console.log(`${half} HALF] ${gameTime}: ${event}`);
-}
+// for (const [gameTime, event] of gameEvents) {
+// #Primeiro método
+// if (gameTime < timeHalf) {
+//   console.log(`[FIRST HALF] ${gameTime}: ${event}`);
+// } else {
+//   console.log(`[SECOND HALF] ${gameTime}: ${event}`);
+// }
+// #Segundo método
+// gameTime < timeHalf
+//   ? console.log(`[FIRST HALF] ${gameTime}: ${event}`)
+//   : console.log(`[SECOND HALF] ${gameTime}: ${event}`);
+// #Terceiro método
+//   const half = gameTime < timeHalf ? '[FIRST' : '[SECOND';
+//   console.log(`${half} HALF] ${gameTime}: ${event}`);
+// }
+
+/*************************************************************************************************/
+
+/* Coding Challenge #4
+
+Write a program that receives a list of variable names written in underscore_case
+and convert them to camelCase.
+The input will come from a textarea inserted into the DOM (see code below to
+insert the elements), and conversion will happen when the button is pressed.
+Test data (pasted to textarea, including spaces):
+underscore_case
+first_name
+Some_Variable
+ calculate_AGE
+delayed_departure
+Should produce this output (5 separate console.log outputs):
+underscoreCase ✅
+firstName ✅✅
+someVariable ✅✅✅
+calculateAge ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+Hints:
+§ Remember which character defines a new line in the textarea �
+§ The solution only needs to work for a variable made out of 2 words, like a_b
+§ Start without worrying about the ✅. Tackle that only after you have the variable
+name conversion working �
+§ This challenge is difficult on purpose, so start watching the solution in case
+you're stuck. Then pause and continue!
+Afterwards, test with your own test data!
+GOOD LUCK
+*/
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const button = document
+  .querySelector('button')
+  .addEventListener('click', function () {
+    const camelNames = [];
+    const text = document.querySelector('textarea').value;
+    const rows = text.split('\n'); // Transforma as strings em uma array
+    for (const row of rows) {
+      if (row.includes(',')) {
+        const [first, second] = row
+          .replace(',', '')
+          .toLowerCase()
+          .trim()
+          .split('_');
+        camelNames.push(
+          first + second.replace(second[0], second[0].toUpperCase())
+        );
+      }
+    }
+    for (const [index, key] of camelNames.entries())
+      console.log(`${key.padEnd(20)} ${'✅'.repeat(index + 1)}`); // if we just want padding with spaces we can just ommit
+  });
+
+// const camelCaseConverter = function (underscore_value) {
+//   let names = underscore_value.toLowerCase().trim().split('_');
+//   const [keyOne, keyTwo] = names;
+//   const camelNames = [];
+//   camelNames.push(keyOne);
+//   camelNames.push(keyTwo.replace(keyTwo[0], keyTwo[0].toUpperCase()));
+//   console.log(camelNames.join(''));
+// };
